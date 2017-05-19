@@ -1,6 +1,7 @@
 # charlink
 
-Created by Good Game Editor. https://good-ed.blogspot.com
+Created by Good Game Editor. https://good-ed.blogspot.com <br/>
+Android download https://play.google.com/store/apps/details?id=weilican.charlink
 
 Link chars pairs to get high score to train your eyes and reaction.
 
