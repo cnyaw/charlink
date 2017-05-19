@@ -1,0 +1,12 @@
+script fx_hit
+  repeat(20)
+    direction(rand(360))
+    speed(200)
+    fire(fx_bom, rand(0.2,0.3))
+  end
+end
+
+script fx_bom
+  sleep($1)
+  clear()
+end
