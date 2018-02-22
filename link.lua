@@ -35,6 +35,23 @@ AnimSandGlass.OnStep = function(param)
   end
 end
 
+function AcKillAnimObj(param)
+  Good.KillObj(param._id)
+end
+
+AnimClearChar = {}
+
+AnimClearChar.OnStep = function(param)
+  if (nil == param.k) then
+    local loop1 = ArAddLoop(nil)
+    ArAddMoveTo(loop1, 'Alpha', 0.15, 0)
+    ArAddCall(loop1, 'AcKillAnimObj', 0)
+    param.k = ArAddAnimator({loop1})
+  else
+    ArStepAnimator(param, param.k)
+  end
+end
+
 function UpdateTimeClock(param)
   if (nil ~= TimeModeClockObj) then
     Good.KillObj(TimeModeClockObj)
@@ -382,8 +399,8 @@ function OnStepClearLink(param)
   if (0 < param.timer) then
     param.timer = param.timer - 1
     if (0 == param.timer) then
-      Good.KillObj(param.o[param.p1])
-      Good.KillObj(param.o[param.p2])
+      Good.SetScript(param.o[param.p1], 'AnimClearChar')
+      Good.SetScript(param.o[param.p2], 'AnimClearChar')
       for i = 0,2 do
         if (nil ~= param.ol[i]) then
           Good.KillObj(param.ol[i])
