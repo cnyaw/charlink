@@ -2,8 +2,7 @@
 version=0.3
 name=Link
 window=480 720
-texs=2 1 8
-maps=3
+texs=2 8
 levels=4 0
 
 [scripts]
@@ -19,25 +18,9 @@ levels=4 0
 name=font
 fileName=./font.png
 
-[tex1]
-name=tile
-fileName=./tile.png
-
 [tex8]
 name=sand glass
 fileName=./sandglass.png
-
-[map3]
-width=12
-height=8
-texture=1
-tileWidth=40
-tileHeight=82
-cxTile=4
-cyTile=1
-data=Y2AgHTACMRMRNAwwEalnuJhPCgAA
-vgrid=1 128 128 128
-hgrid=1 128 128 128
 
 [level4]
 name=title

@@ -2,8 +2,8 @@
 math.randomseed(os.time())
 
 SW, SH = Good.GetWindowSize()
-local MAP_W, MAP_H = 12, 8
-TILE_W, TILE_H = 40, 82
+MAP_W, MAP_H = 12, 8
+TILE_W, TILE_H = 44, 82
 local TW, TH = 15, 7
 local FONT_W, FONT_H = 16, 32
 local INIT_BLOCK_COUNT = 12
@@ -70,7 +70,7 @@ end
 
 function GenCharObj(parent, p)
   local o = GenTexObj(parent, idTexRes, FONT_W, FONT_H, FONT_W * (p % TW), FONT_H * math.floor(p / TW))
-  Good.SetScale(o, 2.5, 2.5)
+  Good.SetScale(o, TILE_W/FONT_W, TILE_H/FONT_H)
   return o
 end
 
@@ -169,8 +169,7 @@ Game.OnCreate = function(param)
 
   -- Init puzzle
 
-  local m = Good.GenObj(-1, 3)
-  Good.SetPos(m, mx, my)
+  GenBkgndObj()
 
   if (TimeMode) then
     local g = Good.GenObj(-1, 8, 'AnimSandGlass')
