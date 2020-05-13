@@ -7,7 +7,7 @@ maps=3
 levels=4 0
 
 [scripts]
-6=./link.lua
+6=./charlink.lua
 7=../good/samples/Util.lua
 5=./title.lua
 9=../good/samples/ar.lua
