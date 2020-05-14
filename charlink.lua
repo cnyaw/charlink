@@ -308,7 +308,19 @@ function GenLinkObj(p1, p2)
       c = c2
     end
   end
-  Good.SetPos(o, mx + TILE_W * c + TILE_W/2, my + TILE_H * r + TILE_H/2)
+  local x = mx + TILE_W * c + TILE_W/2
+  local y = my + TILE_H * r + TILE_H/2
+  if (0 == c) then
+    x = x + TILE_W/4
+  elseif (MAP_W - 1 == c) then
+    x = x - TILE_W/4
+  end
+  if (0 == r) then
+    y = y + TILE_H/4
+  elseif (MAP_W - 1 == r) then
+    y = y - TILE_H/4
+  end
+  Good.SetPos(o, x, y)
   return o
 end
 
