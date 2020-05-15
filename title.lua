@@ -1,31 +1,6 @@
 local TITLE_GX, TITLE_GY = (SW - 30)/2, SH - 90
 local SAV_FILE_NAME = "charlink.sav"
 
-local idBkgnd = nil
-
-function GenBkgndObj()
-  if (nil == idBkgnd) then
-    GenBkgndTex()
-  end
-  local o = Good.GenObj(-1, idBkgnd)
-  Good.SetPos(o, (SW - (MAP_W-2) * TILE_W) / 2, (SH - (MAP_H-2) * TILE_H) / 2)
-end
-
-function GenBkgndTex()
-  local idCanvas = Graphics.GenCanvas((MAP_W-2) * TILE_W, (MAP_H-2) * TILE_H)
-  local clr = {[true]=0x30ffffff, [false]=0x70ffffff}
-  local clridx = true
-  for i = 0, MAP_H - 1 do
-    for j = 0, MAP_W - 1 do
-      Graphics.FillRect(idCanvas, j * TILE_W, i * TILE_H, TILE_W, TILE_H, clr[clridx])
-      clridx = not clridx
-    end
-    clridx = not clridx
-  end
-  idBkgnd = Resource.GenTex(idCanvas)
-  Graphics.KillCanvas(idCanvas)
-end
-
 function GenTimeModeIndicator(param)
   param.sandglasso = GenCharObj(-1, string.byte('/', 1) - 32)
   Good.SetBgColor(param.sandglasso, 0xffff0000)

@@ -2,8 +2,8 @@
 math.randomseed(os.time())
 
 SW, SH = Good.GetWindowSize()
-MAP_W, MAP_H = 12, 8
-TILE_W, TILE_H = 44, 82
+local MAP_W, MAP_H = 12, 8
+TILE_W, TILE_H = 45, 82
 local TW, TH = 15, 7
 local FONT_W, FONT_H = 16, 32
 local INIT_BLOCK_COUNT = 12
@@ -11,7 +11,7 @@ local NEXT_BLOCK_COUNT = 10
 local COUNT_DOWN_TIME = 7
 local MAX_CARD = 60
 
-mx, my = (SW - MAP_W * TILE_W) / 2, (SH - MAP_H * TILE_H) / 2
+local mx, my = (SW - MAP_W * TILE_W) / 2, (SH - MAP_H * TILE_H) / 2
 local idTexRes = Resource.GetTexId('font')
 local QuitGameClock
 local ClearCount
@@ -19,6 +19,8 @@ local TimeModeClock
 local TimeModeClockObj
 TimeMode = true
 HiScore = 0
+
+local idBkgnd = nil
 
 AnimSandGlass = {}
 
@@ -66,6 +68,29 @@ function UpdateTimeClock(param)
       Good.SetPos(TimeModeClockObj, (SW - 30)/2 + TILE_W, my + 4)
     end
   end
+end
+
+function GenBkgndObj()
+  if (nil == idBkgnd) then
+    GenBkgndTex()
+  end
+  local o = Good.GenObj(-1, idBkgnd)
+  Good.SetPos(o, (SW - (MAP_W-2) * TILE_W) / 2, (SH - (MAP_H-2) * TILE_H) / 2)
+end
+
+function GenBkgndTex()
+  local idCanvas = Graphics.GenCanvas((MAP_W-2) * TILE_W, (MAP_H-2) * TILE_H)
+  local clr = {[true]=0x30ffffff, [false]=0x70ffffff}
+  local clridx = true
+  for i = 0, MAP_H - 1 do
+    for j = 0, MAP_W - 1 do
+      Graphics.FillRect(idCanvas, j * TILE_W, i * TILE_H, TILE_W, TILE_H, clr[clridx])
+      clridx = not clridx
+    end
+    clridx = not clridx
+  end
+  idBkgnd = Resource.GenTex(idCanvas)
+  Graphics.KillCanvas(idCanvas)
 end
 
 function GenCharObj(parent, p)
