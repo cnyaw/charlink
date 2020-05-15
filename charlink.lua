@@ -49,6 +49,8 @@ AnimClearChar.OnStep = function(param)
     ArAddMoveTo(loop1, 'Alpha', 0.15, 0)
     ArAddCall(loop1, 'AcKillAnimObj', 0)
     param.k = ArAddAnimator({loop1})
+    local x, y = Good.GetPos(param._id)
+    Stge.RunScript('fx_hit', x + TILE_W/2, y + TILE_H/2)
   else
     ArStepAnimator(param, param.k)
   end
@@ -129,7 +131,6 @@ function UpdateScore(param, add)
   if (param.score > HiScore) then
     HiScore = param.score
     SaveHiScore()
-    Stge.RunScript('fx_hit', math.floor(9.5 * FONT_W), FONT_H, 0)
   end
   local slv = string.format('Hi-Score:%d Score:%d', HiScore, param.score)
   if (nil ~= param.scoreo) then
