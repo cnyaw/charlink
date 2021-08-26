@@ -210,7 +210,7 @@ Game.OnCreate = function(param)
 
   local o = GenColorObj(param._id, TILE_W, TILE_H, 0xaaff0000)
   Good.SetPos(o, mx, my)
-  Good.SetVisible(o, 0)
+  Good.SetVisible(o, Good.INVISIBLE)
   param.s = o
 end
 
@@ -450,7 +450,7 @@ function OnStepClearLink(param)
       param.p2 = -1
       param.link = {}
       param.c = param.c - 2
-      Good.SetVisible(param.s, 0)
+      Good.SetVisible(param.s, Good.INVISIBLE)
 
       UpdateScore(param, 2)
 
@@ -536,14 +536,14 @@ function OnStepDefault(param)
     elseif (-1 == param.p1) then
       param.p1 = pi
       Good.SetPos(param.s, mx + TILE_W * c, my + TILE_H * r)
-      Good.SetVisible(param.s, 1)
+      Good.SetVisible(param.s, Good.VISIBLE)
     elseif (-1 == param.p2) then
       if (param.p[param.p1] == param.p[pi]) then
         param.p2 = pi
       else
         param.p1 = pi
         Good.SetPos(param.s, mx + TILE_W * c, my + TILE_H * r)
-        Good.SetVisible(param.s, 1)
+        Good.SetVisible(param.s, Good.VISIBLE)
       end
     end
 
@@ -558,7 +558,7 @@ function OnStepDefault(param)
       param.p1 = pi
       param.p2 = -1
       Good.SetPos(param.s, mx + TILE_W * c, my + TILE_H * r)
-      Good.SetVisible(param.s, 1)
+      Good.SetVisible(param.s, Good.VISIBLE)
       return
     end
 
