@@ -28,7 +28,7 @@ AnimSandGlass = {}
 AnimSandGlass.OnStep = function(param)
   if (nil == param.k) then
     Good.SetAnchor(param._id, 0.5, 0.5)
-    local loop1 = ArAddLoop(nil)
+    local loop1 = ArAddLoop()
     ArAddMoveBy(loop1, 'Rot', 0.5, 360).ease = ArEaseOut
     ArAddCall(loop1, 'UpdateTimeClock', 0.5)
     param.k = ArAddAnimator({loop1})
@@ -46,7 +46,7 @@ AnimClearChar = {}
 
 AnimClearChar.OnStep = function(param)
   if (nil == param.k) then
-    local loop1 = ArAddLoop(nil)
+    local loop1 = ArAddLoop()
     ArAddMoveTo(loop1, 'Alpha', 0.15, 0)
     ArAddCall(loop1, 'AcKillAnimObj', 0)
     param.k = ArAddAnimator({loop1})
