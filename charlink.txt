@@ -6,21 +6,21 @@ texs=2 8
 levels=4 0
 
 [scripts]
-6=./charlink.lua
+6=./script/charlink.lua
 7=../good/samples/Util.lua
-5=./title.lua
+5=./script/title.lua
 9=../good/samples/ar.lua
 
 [stges]
-10=./particle.stge
+10=./script/particle.stge
 
 [tex2]
 name=font
-fileName=./font.png
+fileName=./res/font.png
 
 [tex8]
 name=sand glass
-fileName=./sandglass.png
+fileName=./res/sandglass.png
 
 [level4]
 name=title
